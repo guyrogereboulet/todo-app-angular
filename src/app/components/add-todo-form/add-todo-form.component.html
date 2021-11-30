@@ -1,1 +1,34 @@
-<p>add-todo-form works!</p>
+<div class="section">
+  <form action="">
+    <div class="field">
+      <label class="label">Descrizione</label>
+      <div class="control">
+        <!-- Il valore dell'input sarà associata alla variabile (#desc) creata nel template  -->
+        <input class="input" type="text" placeholder="Task 1" #desc />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Priorità</label>
+      <div class="control">
+        <!-- Il valore dell'input sarà associata alla variabile (#priority) creata nel template  -->
+        <input
+          class="input"
+          type="number"
+          min="1"
+          max="5"
+          placeholder="Task 2"
+          #priority
+        />
+      </div>
+    </div>
+    <!-- Aggiungiamo all'evenyo click iò metodo onAddTask che prende come ingresso una descrizione e una priorità -->
+    <button
+      type="button"
+      class="button is-dark"
+      (click)="onAddTask(desc, priority)"
+    >
+      Aggiungi
+    </button>
+  </form>
+</div>

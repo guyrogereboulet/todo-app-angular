@@ -1,4 +1,8 @@
+<h2 class="subtitle is-4">Elenco Task</h2>
 <div class="columns is-multiline">
-    <!-- Con ngFor ciclo l'arrai che ho nel ts del componente -->
-  <div class="column is-4 todo" *ngFor="let todo of todos">{{ todo.desc }}</div>
+  <!-- Con ngFor ciclo l'array che ho nel ts del componente -->
+  <div class="column is-4" *ngFor="let todo of todos">
+    <!-- Gli specifichiamo che deve ricevere con input un todo -->
+    <app-todo-item [todo]="todo"></app-todo-item>
+  </div>
 </div>
