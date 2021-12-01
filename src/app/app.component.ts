@@ -8,11 +8,11 @@ import { Todo } from './components/todo-item/todo.model';
 })
 export class AppComponent {
   //Inizializzo i todos come un array di TODO(IL modello di TODO che ho creato nella cartella )
-  todos: Todo[];
+  listOfTodo: Todo[];
 
   constructor() {
     //Creo nel construttoreun array di TODOs contenente i dati del singolo TODO
-    this.todos = [
+    this.listOfTodo = [
       new Todo('1', 'Task 1', '2'),
       new Todo('2', 'Task 2', '2'),
       new Todo('3', 'Task 3', '2'),
@@ -23,7 +23,7 @@ export class AppComponent {
 
   onAddTodo({ desc, priority }: { desc: string; priority: string }) {
     console.log({ desc, priority });
-    // const newId = (this.todos.length + 1).toString();
-    // this.todos.push(new Todo(newId, desc, priority));
+    const newId = (this.listOfTodo.length + 1).toString();
+    this.listOfTodo.push(new Todo(newId, desc, priority));
   }
 }

@@ -7,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./add-todo-form.component.css'],
 })
 export class AddTodoFormComponent implements OnInit {
+  //Con l'Output abbiamo la possibilità di fare uscire dei dati dal componente
   // Per emettere un evento dobbiamo inserire il decoratore @Output e dichiaro il metodo newTodo
   @Output() newTodo: EventEmitter<any> = new EventEmitter<any>();
   constructor() {}
@@ -19,7 +20,7 @@ export class AddTodoFormComponent implements OnInit {
       desc: desc.value,
       priority: priority.value,
     };
-    //Utilizzo il meto emit che ho creato nel decoratore
+    //Utilizzo il metodo emit che ho creato nel decoratore
     this.newTodo.emit(newTodo);
     // console.log(desc.value, 'Desc');
     // console.log(priority.value, 'Desc');
