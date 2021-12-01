@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+// import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-add-todo-form',
@@ -6,12 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-todo-form.component.css'],
 })
 export class AddTodoFormComponent implements OnInit {
+  // Per emettere un evento dobbiamo inserire il decoratore @Output e dichiaro il metodo newTodo
+  @Output() newTodo: EventEmitter<any> = new EventEmitter<any>();
   constructor() {}
 
   ngOnInit(): void {}
   //Creiamo il metodo onAddTask
-  onAddTask(desc: any, priority: any) {
-    console.log(desc.value, 'Desc');
-    console.log(priority.value, 'Desc');
+  //Visto che usiamo typescript aggiungiamo il tipo delle vatiabili negli argomenti del metodo
+  onAddTodo(desc: HTMLInputElement, priority: HTMLInputElement) {
+    const newTodo: any = {
+      desc: desc.value,
+      priority: priority.value,
+    };
+    //Utilizzo il meto emit che ho creato nel decoratore
+    this.newTodo.emit(newTodo);
+    // console.log(desc.value, 'Desc');
+    // console.log(priority.value, 'Desc');
   }
 }

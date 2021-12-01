@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Todo } from '../todo-item/todo.model';
 
 @Component({
   selector: 'app-todo-list',
@@ -6,35 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent implements OnInit {
-  //Inizializzo i todos come un array di any(qualsiasi dato in ingresso)
-  todos: any[];
+  @Input()
+  todos!: Todo[];
 
-  constructor() {
-    //Creo un componente contenente i dati del singolo todo
-    this.todos = [
-      {
-        id: 1,
-        desc: 'Task 1',
-        date: new Date(),
-        priority: 2,
-        completed: false,
-      },
-      {
-        id: 2,
-        desc: 'Task 1',
-        date: new Date(),
-        priority: 5,
-        completed: false,
-      },
-      {
-        id: 3,
-        desc: 'Task 1',
-        date: new Date(),
-        priority: 1,
-        completed: false,
-      },
-    ];
-  }
+  constructor() {}
 
   ngOnInit(): void {}
 }
