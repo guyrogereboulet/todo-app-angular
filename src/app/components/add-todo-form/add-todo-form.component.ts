@@ -18,17 +18,37 @@ export class AddTodoFormComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  getInputClass(): string {
+    let toRet = 'input ';
 
-  //Creaiamo il metodo per il controllo
+    if (this.formError.isError) {
+      toRet += 'is-danger';
+    }
+
+    return toRet;
+  }
+
+  //Creiamo il metodo per il controllo
   checkForm(desc: string, priority: any): void {
-    this.formError.isError = true;
     if (desc == '') {
+      this.formError.isError = true;
       this.formError.descError = true;
       this.formError.descErrorMsg = 'Devi inserire una descrizione';
-    } else if (priority < 1 || priority > 5) {
+    } else if (desc == '') {
+      this.formError.isError = false;
+      this.formError.descError = false;
+      this.formError.descErrorMsg = '';
+    }
+
+    if (priority < 1 || priority > 5) {
+      this.formError.isError = true;
       this.formError.priorityError = true;
       this.formError.priorityErrorMsg =
         'La priorità deve essre compresa tra 1 e 5';
+    } else {
+      this.formError.isError = false;
+      this.formError.priorityError = false;
+      this.formError.priorityErrorMsg = '';
     }
   }
 

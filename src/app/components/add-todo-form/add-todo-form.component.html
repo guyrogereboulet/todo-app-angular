@@ -4,8 +4,14 @@
       <label class="label">Descrizione</label>
       <div class="control">
         <!-- Il valore dell'input sarà associata alla variabile (#desc) creata nel template  -->
-        <input class="input is-success" type="text" placeholder="Task" #desc />
+        <input
+          [className]="getInputClass()"
+          type="text"
+          placeholder="Task"
+          #desc
+        />
       </div>
+      <p class="help is-danger">{{ formError.descErrorMsg }}</p>
     </div>
 
     <div class="field">
@@ -13,7 +19,7 @@
       <div class="control">
         <!-- Il valore dell'input sarà associata alla variabile (#priority) creata nel template  -->
         <input
-          class="input is-danger"
+          [className]="getInputClass()"
           type="number"
           min="1"
           max="5"
@@ -21,6 +27,7 @@
           #priority
         />
       </div>
+      <p class="help is-danger">{{ formError.priorityErrorMsg }}</p>
     </div>
     <!-- Aggiungiamo all'evenyo click iò metodo onAddTask che prende come ingresso una descrizione e una priorità -->
     <button
