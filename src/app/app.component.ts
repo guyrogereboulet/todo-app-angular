@@ -21,6 +21,12 @@ export class AppComponent {
     ];
   }
 
+  sortedTodos(): Todo[] {
+    return this.listOfTodo.sort((a: Todo, b: Todo) =>
+      a.priority > b.priority ? -1 : a.priority < b.priority ? 1 : 0
+    );
+  }
+
   onAddTodo({ desc, priority }: { desc: string; priority: string }) {
     console.log({ desc, priority });
     const newId = (this.listOfTodo.length + 1).toString();

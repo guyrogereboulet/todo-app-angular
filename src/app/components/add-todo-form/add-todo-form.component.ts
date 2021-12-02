@@ -20,9 +20,10 @@ export class AddTodoFormComponent implements OnInit {
       desc: desc.value,
       priority: priority.value,
     };
+    //Svuoto i campi "Descrizione" e "Priorità" dopo aver cliccato su aggiungi
+    desc.value = '';
+    priority.value = '';
     //Utilizzo il metodo emit che ho creato nel decoratore
     this.newTodo.emit(newTodo);
-    // console.log(desc.value, 'Desc');
-    // console.log(priority.value, 'Desc');
   }
 }

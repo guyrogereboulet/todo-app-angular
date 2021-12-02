@@ -1,5 +1,7 @@
 <article class="message is-dark">
   <div class="message-body">
     <p>{{ todo.desc }}</p>
+    <p>Priorità: {{ todo.priority }}</p>
+    <small>{{ todo.date.toLocaleDateString() }}</small>
   </div>
 </article>
