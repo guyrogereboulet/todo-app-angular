@@ -1,0 +1,6 @@
+<h2 class="subtitle is-4">Elenco Task</h2>
+<div class="columns is-multiline">
+  <div class="column is-4 todo" *ngFor="let todo of todos">
+    <app-todo-item [todo]="todo" (completeTodo)="onCompleteTodo($event)"></app-todo-item>
+  </div>
+</div>

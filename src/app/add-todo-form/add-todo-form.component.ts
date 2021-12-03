@@ -1,23 +1,22 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AddFormError } from './add-form-error.model';
-// import { EventEmitter } from 'stream';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AddFormError} from './add-form-error.model';
 
 @Component({
   selector: 'app-add-todo-form',
   templateUrl: './add-todo-form.component.html',
-  styleUrls: ['./add-todo-form.component.css'],
+  styleUrls: ['./add-todo-form.component.css']
 })
 export class AddTodoFormComponent implements OnInit {
-  //Con l'Output abbiamo la possibilità di fare uscire dei dati dal componente
-  // Per emettere un evento dobbiamo inserire il decoratore @Output e dichiaro il metodo newTodo
   @Output() newTodo: EventEmitter<any> = new EventEmitter<any>();
-  //Controllo dati inserito negli input
   formError: AddFormError;
+
   constructor() {
     this.formError = new AddFormError();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
   getInputClass(): string {
     let toRet = 'input ';
 
@@ -28,13 +27,12 @@ export class AddTodoFormComponent implements OnInit {
     return toRet;
   }
 
-  //Creiamo il metodo per il controllo
-  checkForm(desc: string, priority: any): void {
-    if (desc == '') {
+  checkForm(desc, priority): void {
+    if (desc === '') {
       this.formError.isError = true;
       this.formError.descError = true;
       this.formError.descErrorMsg = 'Devi inserire una descrizione';
-    } else if (desc == '') {
+    } else if (desc !== '') {
       this.formError.isError = false;
       this.formError.descError = false;
       this.formError.descErrorMsg = '';
@@ -43,8 +41,7 @@ export class AddTodoFormComponent implements OnInit {
     if (priority < 1 || priority > 5) {
       this.formError.isError = true;
       this.formError.priorityError = true;
-      this.formError.priorityErrorMsg =
-        'La priorità deve essere compresa tra 1 e 5';
+      this.formError.priorityErrorMsg = 'La priorità deve essere compresa tra 1 e 5';
     } else {
       this.formError.isError = false;
       this.formError.priorityError = false;
@@ -52,8 +49,6 @@ export class AddTodoFormComponent implements OnInit {
     }
   }
 
-  //Creiamo il metodo onAddTodo
-  //Visto che usiamo typescript aggiungiamo il tipo delle vatiabili negli argomenti del metodo
   onAddTodo(desc: HTMLInputElement, priority: HTMLInputElement) {
     const descValue = desc.value;
     const priorityValue = priority.value;
@@ -64,11 +59,10 @@ export class AddTodoFormComponent implements OnInit {
         desc: descValue,
         priority: priorityValue,
       };
-      //Svuoto i campi "Descrizione" e "Priorità" dopo aver cliccato su aggiungi
       desc.value = '';
       priority.value = '';
-      //Utilizzo il metodo emit che ho creato nel decoratore
       this.newTodo.emit(newTodo);
     }
   }
+
 }
